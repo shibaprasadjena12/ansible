@@ -1,0 +1,22 @@
+---
+- name: inginx install
+  hosts: webserver2
+  become: true
+  tasks:
+  - name: install nginx
+    apt:
+      name: nginx
+      state: present
+  - name: html file copy source to destination directory
+    copy:
+     src: index.html
+     dest: /var/www/html/index.html
+  - name: start nginx service
+    service:
+     name: nginx
+     enabled: yes
+     state: started
+  - name: install java
+    apt:
+     name: openjdk-17-jre-headless
+     state: present

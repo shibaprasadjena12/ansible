@@ -1,0 +1,10 @@
+---
+- name: Uninstall Nginx from Ubuntu
+  hosts: all
+  become: yes  # Run with sudo privileges
+  tasks:
+    - name: Clean up unused packages
+      ansible.builtin.apt:
+        autoclean: yes
+        autoremove: yes
+

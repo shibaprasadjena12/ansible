@@ -1,0 +1,22 @@
+---
+- name: nginx deployment
+  hosts: all
+  become: true
+  tasks:
+    - name: install nginx
+      apt:
+         name: nginx
+         state: present
+    - name: mo file ku copy kariki host machine ku nei jaa
+      copy:
+        src: index.html
+        dest: /var/www/html/index.html
+    - name: start  nginx service
+      service:
+        name: nginx
+        state: started
+        enabled: yes
+    - name: install java
+      apt:
+        name:  openjdk-17-jre-headless
+        state: present

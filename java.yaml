@@ -1,0 +1,9 @@
+---
+- name: install java
+  hosts: all
+  become: true
+  tasks:
+   - name: java install
+     apt:
+      name: openjdk-17-jre-headless
+      state: present
